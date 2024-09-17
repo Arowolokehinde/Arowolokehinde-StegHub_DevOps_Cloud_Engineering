@@ -180,3 +180,24 @@ A new index.php file was created inside the custom web root folder.
 
 vim /var/www/projectlamp/index.php
 Add the text below in the index.php file
+
+<?php
+phpinfo();
+
+![Screenshot 2024-09-14 132819](https://github.com/user-attachments/assets/357c441e-2b96-45ae-aa95-199d242147b7)
+4. Now refresh the page
+
+![Screenshot 2024-09-14 132903](https://github.com/user-attachments/assets/baadcf1b-e7c4-4310-955d-60b55971b7ea)
+
+
+This page provides information about the server from the perspective of PHP. It is useful for debugging and to ensure the settings are being applied correctly.
+
+After checking the relevant information about the server through this page, It’s best to remove the file created as it contains sensitive information about the PHP environment and the ubuntu server. It can always be recreated if the information is needed later.
+
+sudo rm /var/www/projectlamp/index.php
+Conclusion:
+
+The LAMP stack provides a robust and flexible platform for developing and deploying web applications. By following the guidelines outlined in this documentation, It was possible to set up, configure, and maintain a LAMP environment effectively, enabling the creation of powerful and scalable web solutions.
+
+![Screenshot 2024-09-14 134423](https://github.com/user-attachments/assets/8747c328-b80d-47f6-ba03-0184adb1562e)
+
