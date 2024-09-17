@@ -183,8 +183,6 @@ Add the text below in the index.php file
 
 <?php
 phpinfo();
-
-![Screenshot 2024-09-14 132819](https://github.com/user-attachments/assets/357c441e-2b96-45ae-aa95-199d242147b7)
 4. Now refresh the page
 
 ![Screenshot 2024-09-14 132903](https://github.com/user-attachments/assets/baadcf1b-e7c4-4310-955d-60b55971b7ea)
