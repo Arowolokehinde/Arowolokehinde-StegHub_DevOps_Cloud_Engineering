@@ -27,4 +27,49 @@ chmod 400 my-ec2-key.pem
 ssh -i "my-ec2-key.pem" ubuntu@3.84.147.176
 Where username=ubuntu and public ip address=3.84.147.176
 ![Screenshot 2024-09-14 112021](https://github.com/user-attachments/assets/ca7788a0-3b4c-49ce-8bd6-e4f777a3fb90)
-![Screenshot 2024-09-14 112032](https://github.com/user-attachments/assets/b1290743-6528-486c-a24c-d611b888c561)
+![Screenshot 2024-09-14 112044](https://github.com/user-attachments/assets/04f052fd-9b69-41a2-94eb-2d7978f06595)
+
+Step 1 - Install Apache and Update the Firewall
+1. Update and upgrade list of packages in package manager.
+   sudo apt update
+   sudo apt upgrade -y
+![Screenshot 2024-09-14 113423](https://github.com/user-attachments/assets/2435a41a-05b6-4eed-b8ef-38a7c3411043)
+
+2. Run apache2 package installation
+  sudo apt install apache2 -y
+3. Enable and verify that apache is running on as a service on the OS.
+   sudo systemctl enable apache2
+   sudo systemctl status apache2
+If it green and running, then apache2 is correctly installed
+![Screenshot 2024-09-14 114435](https://github.com/user-attachments/assets/cc3f0b26-aa3c-4ea8-8c01-cd1a9ab3f915)
+
+4. The server is running and can be accessed locally in the ubuntu shell by running the command below:
+   curl http://localhost:80
+  OR
+  curl http://127.0.0.1:80
+5. Test with the public IP address if the Apache HTTP server can respond to request from the internet using the url on a browser.
+ http://3.84.147.176
+![Screenshot 2024-09-14 114639](https://github.com/user-attachments/assets/02483603-b2d0-4f22-9fd1-03a98a8e9a21)
+This shows that the web server is correctly installed and it is accessible through the firewall.
+
+Step 2 - Install MySQL
+1. Install a relational database (RDB)
+
+MySQL was installed in this project. It is a popular relational database management system used within PHP environments.
+  sudo apt install mysql-server
+When prompted, install was confirmed by typing y and then Enter.
+
+2. Enable and verify that mysql is running with the commands below.
+   sudo systemctl enable --now mysql
+   sudo systemctl status mysql
+
+3.  Log in to mysql console
+   sudo mysql -p
+This connects to the MySQL server as the administrative database user root infered by the use of sudo when running the command.
+
+4. Set a password for root user using mysql_native_password as default authentication method.
+
+Here, the user's password was defined as "Admin123$"
+  ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Admin123$';
+![Screenshot 2024-09-14 122633](https://github.com/user-attachments/assets/a0e6b3bf-b4d7-4732-8519-5473cc04ef23)
+  
