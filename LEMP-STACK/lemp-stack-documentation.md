@@ -1,4 +1,4 @@
-![Screenshot 2024-09-23 152403](https://github.com/user-attachments/assets/2641530b-0c44-468b-8c52-2ed3b416f5d2)# LEMP Stack Implementation in AWS
+# LEMP Stack Implementation in AWS
 
 ## Introduction
 The LEMP stack is a popular open-source web development platform that consists of four main components: **Linux**, **Nginx**, **MySQL**, and **PHP** (or sometimes Perl or Python). This documentation outlines the setup, configuration, and usage of the LEMP stack on an AWS EC2 instance.
