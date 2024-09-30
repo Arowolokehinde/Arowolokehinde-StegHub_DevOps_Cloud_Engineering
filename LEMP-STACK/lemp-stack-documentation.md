@@ -234,101 +234,112 @@ location ~ /.ht - The last location block deals with .htaccess files, which Ngin
 ## Step 6 - Retrieve Data from MySQL database with PHP
 Create a new user with the mysql_native_password authentication method in order to be able to connect to MySQL database from PHP.
 
-Create a database named todo_database and a user named todo_user
+## Create a database named todo_database and a user named todo_user
 
 1. First, connect to the MySQL console using the root account.
+```
+  sudo mysql -p
+```
+## 2. Create a new database
+```
+  CREATE DATABASE todo_database;
+```
+## 3. Create a new user and grant the user full privileges on the new database.
+```
+  CREATE USER 'todo_user'@'%' IDENTIFIED WITH mysql_native_password BY 'Admin123$';
+  
+  GRANT ALL ON todo_database.* TO 'todo_user'@'%';
+```
+```
+  exit
+```
+## 4. Login to MySQL console with the user custom credentials and confirm that you have access to todo_database.
+```
+  mysql -u todo_user -p
 
-sudo mysql -p
-
-2. Create a new database
-
-CREATE DATABASE todo_database;
-
-3. Create a new user and grant the user full privileges on the new database.
-
-CREATE USER 'todo_user'@'%' IDENTIFIED WITH mysql_native_password BY 'Admin123$';
-
-GRANT ALL ON todo_database.* TO 'todo_user'@'%';
-
-exit
-4. Login to MySQL console with the user custom credentials and confirm that you have access to todo_database.
-
-mysql -u todo_user -p
-
-SHOW DATABASES;
-
+  SHOW DATABASES;
+```
 The -p flag will prompt for password used when creating the example_user
 
-5. Create a test table named todo_list.
+## 5. Create a test table named todo_list.
 
 From MySQL console, run the following:
-
-CREATE TABLE todo_database.todo_list (
-  item_id INT AUTO_INCREMENT,
-  content VARCHAR(255),
-  PRIMARY KEY(item_id)
-);
-6. Insert a few rows of content to the test table.
-
-INSERT INTO todo_database.todo_list (content) VALUES ("My first important item");
-
-INSERT INTO todo_database.todo_list (content) VALUES ("My second important item");
-
-INSERT INTO todo_database.todo_list (content) VALUES ("My third important item");
-
-INSERT INTO todo_database.todo_list (content) VALUES ("and this one more thing");
-
-7. To confirm that the data was successfully saved to the table run:
-
-SELECT * FROM todo_database.todo_list; 
-
-exit
-Create a PHP script that will connect to MySQL and query the content.
-1. Create a new PHP file in the custom web root directory
-
-sudo nano /var/www/projectLEMP/todo_list.php
+```  
+  CREATE TABLE todo_database.todo_list (
+    item_id INT AUTO_INCREMENT,
+    content VARCHAR(255),
+    PRIMARY KEY(item_id)
+  );
+```
+## 6. Insert a few rows of content to the test table.
+```
+  INSERT INTO todo_database.todo_list (content) VALUES ("My first important item");
+  
+  INSERT INTO todo_database.todo_list (content) VALUES ("My second important item");
+  
+  INSERT INTO todo_database.todo_list (content) VALUES ("My third important item");
+  
+  INSERT INTO todo_database.todo_list (content) VALUES ("and this one more thing");
+```
+## 7. To confirm that the data was successfully saved to the table run:
+```
+  SELECT * FROM todo_database.todo_list; 
+```
+```
+  exit
+```
+## Create a PHP script that will connect to MySQL and query the content.
+## 1. Create a new PHP file in the custom web root directory
+```
+  sudo nano /var/www/projectLEMP/todo_list.php
+```
 The PHP script connects to MySQL database and queries for the content of the todo_list table, displays the results in a list. If there’s a problem with the database connection, it will throw an exception.
 
 Copy the content below into the todo_list.php script.
-
-<?php
-$user = "todo_user";
-$password = "Admin123$";
-$database = "todo_database";
-$table = "todo_list";
-
-try {
-  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
-  echo "<h2>TODO</h2><ol>";
-  foreach($db->query("SELECT content FROM $table") as $row) {
-    echo "<li>" . $row['content'] . "</li>";
+```
+  <?php
+  $user = "todo_user";
+  $password = "Admin123$";
+  $database = "todo_database";
+  $table = "todo_list";
+  
+  try {
+    $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+    echo "<h2>TODO</h2><ol>";
+    foreach($db->query("SELECT content FROM $table") as $row) {
+      echo "<li>" . $row['content'] . "</li>";
+    }
+    echo "</ol>";
+  } catch (PDOException $e) {
+      print "Error!: " . $e->getMessage() . "<br/>";
+      die();
   }
-  echo "</ol>";
-} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
-}
-?>
+  ?>
+```
 
-2. Now access this page on the browser by using the domain name or public IP address followed by /todo_list.php
+## 2. Now access this page on the browser by using the domain name or public IP address followed by /todo_list.php
+```
+  http://18.209.18.61/todo_list.php
+```
 
-http://18.209.18.61/todo_list.php
+## 2. Now access this page on the browser by using the domain name or public IP address followed by /todo_list.php
+```
+  http://18.209.18.61/todo_list.php
+```
+When the PHP script queried the database there was an error "502 Bad Gateway" displayed on the browser. This is because the PHP version specified in the Nginx server configuration is php8.1 while the version of the PHP installed is php8.3
 
-2. Now access this page on the browser by using the domain name or public IP address followed by /todo_list.php
+This was troubleshooted by updating the Nginx server configuration with PHP version php8.3
 
-http://18.209.18.61/todo_list.php
 
 Ater updating the Nginx server, the URL was tested again on the browser and there no error.
-
-http://18.209.18.61/todo_list.php
-
+```
+  http://18.209.18.61/todo_list.php
+```
 Access this page on the browser by using the domain name followed by /todo_list.php
-
-Conclusion
-The LEMP stack provides a robust platform for hosting and serving web applications. By leveraging the power of Linux, Nginx, MySQL (or MariaDB), and PHP, developers can deploy scalable and reliable web solutions.
 
 ### Troubleshooting PHP Errors
 If you encounter a "502 Bad Gateway" error, ensure the PHP version in the Nginx configuration matches the installed version. Update to the correct version as needed.
 
+
 ## Conclusion
-The LEMP stack provides a robust platform for hosting and serving web applications. By leveraging the power of Linux, Nginx, MySQL, and PHP, developers can deploy scalable and reliable web solutions.
+The LEMP stack provides a robust platform for hosting and serving web applications. By leveraging the power of Linux, Nginx, MySQL (or MariaDB), and PHP, developers can deploy scalable and reliable web solutions.
