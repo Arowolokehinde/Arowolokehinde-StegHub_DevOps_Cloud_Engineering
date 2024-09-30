@@ -236,15 +236,15 @@ Create a new user with the mysql_native_password authentication method in order 
 
 ## Create a database named todo_database and a user named todo_user
 
-###1. First, connect to the MySQL console using the root account.
+1. First, connect to the MySQL console using the root account.
 ```
   sudo mysql -p
 ```
-### 2. Create a new database
+2. Create a new database
 ```
   CREATE DATABASE todo_database;
 ```
-### 3. Create a new user and grant the user full privileges on the new database.
+3. Create a new user and grant the user full privileges on the new database.
 ```
   CREATE USER 'todo_user'@'%' IDENTIFIED WITH mysql_native_password BY 'Admin123$';
   
@@ -253,7 +253,7 @@ Create a new user with the mysql_native_password authentication method in order 
 ```
   exit
 ```
-### 4. Login to MySQL console with the user custom credentials and confirm that you have access to todo_database.
+4. Login to MySQL console with the user custom credentials and confirm that you have access to todo_database.
 ```
   mysql -u todo_user -p
 
@@ -261,7 +261,7 @@ Create a new user with the mysql_native_password authentication method in order 
 ```
 The -p flag will prompt for password used when creating the example_user
 
-### 5. Create a test table named todo_list.
+5. Create a test table named todo_list.
 
 From MySQL console, run the following:
 ```  
@@ -271,7 +271,7 @@ From MySQL console, run the following:
     PRIMARY KEY(item_id)
   );
 ```
-### 6. Insert a few rows of content to the test table.
+6. Insert a few rows of content to the test table.
 ```
   INSERT INTO todo_database.todo_list (content) VALUES ("My first important item");
   
@@ -281,7 +281,7 @@ From MySQL console, run the following:
   
   INSERT INTO todo_database.todo_list (content) VALUES ("and this one more thing");
 ```
-### 7. To confirm that the data was successfully saved to the table run:
+7. To confirm that the data was successfully saved to the table run:
 ```
   SELECT * FROM todo_database.todo_list; 
 ```
@@ -289,7 +289,7 @@ From MySQL console, run the following:
   exit
 ```
 ## Create a PHP script that will connect to MySQL and query the content.
-### 1. Create a new PHP file in the custom web root directory
+1. Create a new PHP file in the custom web root directory
 ```
   sudo nano /var/www/projectLEMP/todo_list.php
 ```
@@ -317,7 +317,7 @@ Copy the content below into the todo_list.php script.
   ?>
 ```
 
-### 2. Now access this page on the browser by using the domain name or public IP address followed by /todo_list.php
+ 2. Now access this page on the browser by using the domain name or public IP address followed by /todo_list.php
 ```
   http://18.209.18.61/todo_list.php
 ```
