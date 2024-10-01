@@ -205,45 +205,61 @@ location ~ /.ht - The last location block deals with .htaccess files, which Ngin
    ```bash
    sudo unlink /etc/nginx/sites-enabled/default
    ```
+   ![Screenshot 2024-09-23 162232](https://github.com/user-attachments/assets/eb64c563-8a28-4482-b428-514540f0684c)
+
 7. Reload Nginx:
    ```bash
    sudo systemctl reload nginx
    ```
+   ![Screenshot 2024-09-23 162232](https://github.com/user-attachments/assets/083aca3b-0f42-4ea4-97d6-741f0cd44268)
+
 8. Create a test index.html file:
    ```bash
    echo 'Hello LEMP from hostname $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) with public IP $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)' | sudo tee /var/www/projectLEMP/index.html
    ```
+   ![Screenshot 2024-09-23 162404](https://github.com/user-attachments/assets/098d425a-9a69-42ab-8954-b035e7f7fd7f)
+
 9. Open the website in a browser:
    ```
    http://18.209.18.61:80
    ```
+![Screenshot 2024-09-23 162449](https://github.com/user-attachments/assets/814a25d3-09ba-4a26-96a9-3a345366b21c)
 
 ## Step 5 - Test PHP with Nginx
 1. Create a test PHP file:
    ```bash
    sudo nano /var/www/projectLEMP/info.php
    ```
-   Add the PHP code to query the database (details omitted in the original document).
+![Screenshot 2024-09-23 163301](https://github.com/user-attachments/assets/693fb97e-3047-4fd6-a4a6-9748c32c353c)
 
-2. Access the PHP file in a browser:
+   Add the PHP code to query the database (details omitted in the original document).
+  ![Screenshot 2024-09-23 163017](https://github.com/user-attachments/assets/ea8b67be-e5c8-41a6-8329-33f82a050ec7)
+
+1. Access the PHP file in a browser:
    ```
    http://18.209.18.61/info.php
 
    ```
+![Screenshot 2024-09-23 163143](https://github.com/user-attachments/assets/883071d1-9466-4df1-ba6f-7b5d68fadb63)
 
 ## Step 6 - Retrieve Data from MySQL database with PHP
-Create a new user with the mysql_native_password authentication method in order to be able to connect to MySQL database from PHP.
+### Create a new user with the mysql_native_password authentication method in order to be able to connect to MySQL database from PHP.
 
-## Create a database named todo_database and a user named todo_user
+ Create a database named todo_database and a user named todo_user
 
 1. First, connect to the MySQL console using the root account.
 ```
   sudo mysql -p
 ```
+![Screenshot 2024-09-23 164122](https://github.com/user-attachments/assets/0fbe7983-b6ad-48d2-b806-034e7027be0f)
+
 2. Create a new database
 ```
   CREATE DATABASE todo_database;
 ```
+![Screenshot 2024-09-23 164530](https://github.com/user-attachments/assets/8fbd46a3-8311-4d27-9446-aecbb24cf1d3)
+
+
 3. Create a new user and grant the user full privileges on the new database.
 ```
   CREATE USER 'todo_user'@'%' IDENTIFIED WITH mysql_native_password BY 'Admin123$';
@@ -253,12 +269,17 @@ Create a new user with the mysql_native_password authentication method in order 
 ```
   exit
 ```
+![Screenshot 2024-09-23 165453](https://github.com/user-attachments/assets/d8a0244c-f4c4-4b0f-9213-f115ee0afcf2)
+
+
 4. Login to MySQL console with the user custom credentials and confirm that you have access to todo_database.
 ```
   mysql -u todo_user -p
 
   SHOW DATABASES;
 ```
+![Screenshot 2024-09-23 164935](https://github.com/user-attachments/assets/5622d846-0ca9-4cdd-add2-587954dcd838)
+
 The -p flag will prompt for password used when creating the example_user
 
 5. Create a test table named todo_list.
@@ -271,6 +292,8 @@ From MySQL console, run the following:
     PRIMARY KEY(item_id)
   );
 ```
+![Screenshot 2024-09-23 165453](https://github.com/user-attachments/assets/ee5a8794-4ff3-425e-a489-9177b55a6056)
+
 6. Insert a few rows of content to the test table.
 ```
   INSERT INTO todo_database.todo_list (content) VALUES ("My first important item");
@@ -281,6 +304,8 @@ From MySQL console, run the following:
   
   INSERT INTO todo_database.todo_list (content) VALUES ("and this one more thing");
 ```
+![Screenshot 2024-09-23 165453](https://github.com/user-attachments/assets/ba7af388-29f4-49bb-a88a-a37b16501a98)
+
 7. To confirm that the data was successfully saved to the table run:
 ```
   SELECT * FROM todo_database.todo_list; 
@@ -288,11 +313,15 @@ From MySQL console, run the following:
 ```
   exit
 ```
+![Screenshot 2024-09-23 165453](https://github.com/user-attachments/assets/04ce89d8-3bdd-4f42-ad3e-596df9e1c44a)
+
 ## Create a PHP script that will connect to MySQL and query the content.
 1. Create a new PHP file in the custom web root directory
 ```
   sudo nano /var/www/projectLEMP/todo_list.php
 ```
+![Screenshot 2024-09-23 170847](https://github.com/user-attachments/assets/6ca29889-7022-4eae-842e-40270bf121a6)
+
 The PHP script connects to MySQL database and queries for the content of the todo_list table, displays the results in a list. If there’s a problem with the database connection, it will throw an exception.
 
 Copy the content below into the todo_list.php script.
@@ -316,11 +345,15 @@ Copy the content below into the todo_list.php script.
   }
   ?>
 ```
+![Screenshot 2024-09-23 170838](https://github.com/user-attachments/assets/3ce3729d-db1b-49fc-ade2-facdfba343ff)
+
 
  2. Now access this page on the browser by using the domain name or public IP address followed by /todo_list.php
 ```
   http://18.209.18.61/todo_list.php
 ```
+![Screenshot 2024-09-23 171446](https://github.com/user-attachments/assets/bb9e76dc-2379-4da8-93ab-a387fb3a16ea)
+
 When the PHP script queried the database there was an error "502 Bad Gateway" displayed on the browser. This is because the PHP version specified in the Nginx server configuration is php8.1 while the version of the PHP installed is php8.3
 
 This was troubleshooted by updating the Nginx server configuration with PHP version php8.3
@@ -330,6 +363,7 @@ Ater updating the Nginx server, the URL was tested again on the browser and ther
 ```
   http://18.209.18.61/todo_list.php
 ```
+
 Access this page on the browser by using the domain name followed by /todo_list.php
 
 ### Troubleshooting PHP Errors
