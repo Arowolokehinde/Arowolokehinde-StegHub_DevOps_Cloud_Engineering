@@ -30,13 +30,9 @@ The choice of the instance type was based on the following:
 -  The security group was configured with the following inbound rules:
 
 - Allow traffic on port 80 (HTTP) with source from anywhere on the internet.
-
 - Allow traffic on port 443 (HTTPS) with source from anywhere on the internet.
-
 - Allow traffic on port 22 (SSH) with source from any IP address. This is opened by default.
-
 - Allow traffic on port 5000 (Custom TCP) with source from anywhere.
-
 - Allow traffic on port 3000 (Custom TCP) with sourec from anywhere.
 
 ![Screenshot 2024-10-03 114116](https://github.com/user-attachments/assets/4a64659e-999d-4d44-970f-fc66a3517c59)
@@ -62,7 +58,7 @@ sudo apt update && sudo apt upgrade -y
 ```
 ![Screenshot 2024-10-03 114426](https://github.com/user-attachments/assets/525a6251-33ce-4b05-9811-4ee15294b02d)
 
-__2.__ __Get the location of Node.js software from ubuntu repositories__.
+**2.** Get the location of Node.js software from ubuntu repositories.
 
 ```bash
 curl fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
@@ -70,16 +66,16 @@ curl fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 ![Screenshot 2024-10-03 114637](https://github.com/user-attachments/assets/627f9d70-5f0b-4f68-8ed5-3fb9fd334659)
 
 
-__3.__ __Install node.js with the command below__.
+**3.** Install node.js with the command below.
 
 ```bash
 sudo apt-get install nodejs -y
 ```
 ![Screenshot 2024-10-03 114810](https://github.com/user-attachments/assets/22529053-2a9a-48ba-a5c7-c2a48404b9da)
 
-__Note:__ the above command installs both node.js and npm. NPM is a package manager for Node just as apt is a package manager for Ubuntu. It is used to install Node modules and packages and to manage dependency conflicts.
+**Note:** the above command installs both node.js and npm. NPM is a package manager for Node just as apt is a package manager for Ubuntu. It is used to install Node modules and packages and to manage dependency conflicts.
 
-**4 **Verify the Node installation with the command below.
+**4** Verify the Node installation with the command below.
 
 ```bash
 node -v        // Gives the node version
@@ -88,7 +84,7 @@ npm -v        // Gives the node package manager version
 ```
 ![Screenshot 2024-10-03 114923](https://github.com/user-attachments/assets/0fd852d1-b8be-4799-9635-f81980206f3e)
 
-### Application Code Setup
+## Application Code Setup
 
 **1**. Create a new directory for the TO-DO project and switch to it. Then initialize the project directory.
 ```bash
@@ -98,40 +94,39 @@ npm init
 ```
 ![Screenshot 2024-10-03 115343](https://github.com/user-attachments/assets/60be1d65-0766-4e42-ab2a-0514ae66d712)
 
-
-
 This is to initialize the project directory and in the process, creates a new file called package.json. This file will contain information about your application and the dependencies it needs to run.
 Follow the prompts after running the command. You can press “Enter” several times to accept default values, then accept to write out the package.json file by typing yes.
 
 
-### Install ExpressJs
+## Install ExpressJs
+Express is a Node.js framework that streamlines development by handling many of the lower-level tasks. It simplifies the process of defining application routes by using HTTP methods and URLs, making it easier to manage web requests and responses.
 
-Express is a framework for Node.js. It simplifies development and abstracts a lot of low level details. For example, express helps to define routes of your application based on HTTP methods and URLs.
-
-__1.__ __Install Express using npm__
+**1.** Install Express using npm
 
 ```bash
 npm install express
 ```
-![Install express](./images/install-express.png)
+![Screenshot 2024-10-03 115601](https://github.com/user-attachments/assets/4208f5f4-bab2-4d0e-ba45-f7e0a6a8c237)
 
-__2.__ __Create a file index.js and run ls to confirm the file__
+**2.** Create a file index.js and run ls to confirm the file
 
 ```bash
 touch index.js && ls
 ```
-![Index.js](./images/create-indexjs.png)
+![Screenshot 2024-10-03 115601](https://github.com/user-attachments/assets/ad007cff-e12a-49a0-b4cf-e382d83a8f9a)
 
-__3.__ __Install dotenv module__
+
+**3.** Install dotenv module
 ```bash
 npm install dotenv
 ```
-![dotenv](./images/install-dotenv.png)
+![Screenshot 2024-10-03 115637](https://github.com/user-attachments/assets/f0977621-43da-431d-a56c-a0e497e86ec2)
 
-__4.__ __Open index.js file__
+**4.** Open index.js file
 ```bash
 vim index.js
 ```
+
 Type the code below into it
 
 ```bash
@@ -156,25 +151,27 @@ app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 ```
-![index.js code](./images/indexjs-file.png)
+![Screenshot 2024-10-03 115835](https://github.com/user-attachments/assets/3d956b32-74d2-4afa-bf02-ff571d28b9ab)
 
-__Note:__ Port 5000 have been specified to be used in the code. This was required later on the browser.
 
-__5.__ __Start the server to see if it works. Open your terminal in the same directory as your index.js file. Run__
+**Note:** Port 5000 have been specified to be used in the code. This was required later on the browser.
+
+**5.** Start the server to see if it works. Open your terminal in the same directory as your index.js file. Run
 ```bash
 node index.js
 ```
-![Start server](./images/start-server.png)
+![Screenshot 2024-10-03 120510](https://github.com/user-attachments/assets/4dad148c-c2f0-49d4-af7a-91d67e15352e)
+
 
 Port 5000 has been opened in ec2 security group.
 
-__Access the server with the public IP followed by the port__
+Access the server with the public IP followed by the port
 
 ```bash
-http://54.175.65.60:5000
+http://54.161.127.212:5000
 ```
-![Express page](./images/express-page.png)
 
+![Screenshot 2024-10-03 120230](https://github.com/user-attachments/assets/308a9ea9-0ba8-473e-a808-124b1da6c03d)
 
 ## Routes
 
@@ -187,11 +184,13 @@ Each task was associated with some particular endpoint and used different standa
 
 For each task, routes were created which defined various endpoints that the ToDo app depends on.
 
-__1.__ __Create a folder routes, switch to routes directory and create a file api.js. Open the file__
+**1**. Create a folder routes, switch to routes directory and create a file api.js. Open the file
 ```bash
 mkdir routes && cd routes && touch api.js
 ```
-![Router](./images/create-router.png)
+![Screenshot 2024-10-03 120558](https://github.com/user-attachments/assets/3e202ddb-7ba3-4a8d-9619-2c89c6a02c07)
+
+![Screenshot 2024-10-03 120707](https://github.com/user-attachments/assets/acb2f230-f2d3-48ee-96b7-e3dd1583c845)
 
 __Copy__ the code below into the file
 
@@ -213,8 +212,8 @@ router.delete('/todos/:id', (req, res, next) => {
 
 module.exports = router;
 ```
-![Route](./images/route.png)
 
+![Screenshot 2024-10-03 120656](https://github.com/user-attachments/assets/0820b25a-f540-4d29-966a-055e4e574e71)
 
 ## Models
 
@@ -225,18 +224,21 @@ Models was used to define the database schema. This is important in order be abl
 In essence, the schema is a blueprint of how the database is constructed, including other data fields that may not be required to be stored in the database. These are known as virtual properties.
 To create a schema and a model, mongoose  was installed, which is a Node.js package that makes working with mongodb easier.
 
-__1.__ __Change the directory back to Todo folder and install mongoose__
+__1.__ Change the directory back to Todo folder and install mongoose
 ```bash
 npm install mongoose
 ```
-![Mongoose](./images/install-mongoose.png)
+![Screenshot 2024-10-03 121059](https://github.com/user-attachments/assets/e5d821ab-1dc5-4a91-a472-626d38d671a5)
 
-__2.__ __Create a new folder models, switch to models directory, create a file todo.js inside models. Open the file__
+
+**2.** Create a new folder models, switch to models directory, create a file todo.js inside models. Open the file
 
 ```bash
 mkdir models && cd models && touch todo.js
 ```
-![](./images/create-models.png)
+![Screenshot 2024-10-03 121214](https://github.com/user-attachments/assets/665a221d-4ed4-4a62-99db-8dd2eeeca83f)
+
+![Screenshot 2024-10-03 121416](https://github.com/user-attachments/assets/f200286a-7b05-4357-9871-3c3aef52f97d)
 
 Past the code below into the file
 
@@ -257,15 +259,16 @@ const Todo = mongoose.model('todo', TodoSchema);
 
 module.exports = Todo;
 ```
-![Schema](./images/schema.png)
+
 
 The routes was updated from the file api.js in the ‘routes’ directory to make use of the new model.
 
-__3.__ __In Routes directory, open api.js and delete the code inside with :%d__.
+**3**. In Routes directory, open api.js and delete the code inside with :%d_.
 
 ```bash
 vim api.js
 ```
+![Screenshot 2024-10-03 121931](https://github.com/user-attachments/assets/c31a87f1-99bd-422d-9d6b-881c0aaf0acc)
 
 Paste the new code below into it
 ```bash
@@ -300,12 +303,13 @@ router.delete('/todos/:id', (req, res, next) => {
 
 module.exports = router;
 ```
-![Router update](./images/update-route.png)
+
+![Screenshot 2024-10-03 121907](https://github.com/user-attachments/assets/2322c593-d025-4192-a4d5-254b8d940263)
 
 
 ## MongoDB Database
 
-__mLab__ provides MongoDB database as a service solution (DBaaS). MongoDB has two cloud database management system components: mLab and Atlas, Both were formerly cloud databases managed by MongoDB (MongoDB acquired mLab in 2018, with certain differences). In November, MongoDB merged the two cloud databases and as such, __mLab.com__ redirects to the __MongoDB Atlas website__.
+**mLab** provides MongoDB database as a service solution (DBaaS). MongoDB has two cloud database management system components: mLab and Atlas, Both were formerly cloud databases managed by MongoDB (MongoDB acquired mLab in 2018, with certain differences). In November, MongoDB merged the two cloud databases and as such, __mLab.com__ redirects to the __MongoDB Atlas website__.
 
 __1.__ __Create a MongoDB database and collection inside mLab__
 
