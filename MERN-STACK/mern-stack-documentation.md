@@ -22,6 +22,7 @@ The choice of the instance type was based on the following:
 - **Burst Capability:** While both instances offer burstable CPU performance, the t3 instances have a more flexible burst model, allowing for more sustained performance during burst periods. This is important for workloads that require consistent performance over longer periods.
 
 - **Performance:** While both instances offer burstable performance, the t3.small typically provides better baseline performance compared to the t2.micro. This might be necessary for applications that require a bit more processing power.
+![Screenshot 2024-10-03 113526](https://github.com/user-attachments/assets/0f075b09-80eb-433c-a667-f0929d13200e)
 
 
 **2** Attached SSH key named __my-ec2-key__ to access the instance on port 22
@@ -41,64 +42,63 @@ The choice of the instance type was based on the following:
 ![Screenshot 2024-10-03 114116](https://github.com/user-attachments/assets/4a64659e-999d-4d44-970f-fc66a3517c59)
 
 
-__4.__ The private ssh key permission was changed for the private key file and then used to connect to the instance by running
+**4** The private ssh key permission was changed for the private key file and then used to connect to the instance by running
 ```bash
 chmod 400 my-ec2-key.pem
 ```
 ```bash
-ssh -i "my-ec2-key.pem" ubuntu@54.175.65.60
+ssh -i "my-ec2-key.pem" ubuntu@ip
 ```
-Where __username=ubuntu__ and __public ip address=54.175.65.60__
-
-![Connect to instance](./images/ssh.png)
+Where __username=ubuntu__ and __public ip address=ip
+![Screenshot 2024-10-03 114501](https://github.com/user-attachments/assets/6b3cc363-ed78-4eb2-89c7-7309f3da0936)
 
 
 ## Step 1 - Backend Configuration
 
-__1.__ __Update and upgrade the server’s package index__
+**1.** Update and upgrade the server’s package index 
 
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
-![Update Packages](./images/update-n-upgrade.png)
-
+![Screenshot 2024-10-03 114426](https://github.com/user-attachments/assets/525a6251-33ce-4b05-9811-4ee15294b02d)
 
 __2.__ __Get the location of Node.js software from ubuntu repositories__.
 
 ```bash
 curl fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 ```
-![Nodejs repository](./images/nodejs-repo.png)
+![Screenshot 2024-10-03 114637](https://github.com/user-attachments/assets/627f9d70-5f0b-4f68-8ed5-3fb9fd334659)
+
 
 __3.__ __Install node.js with the command below__.
 
 ```bash
 sudo apt-get install nodejs -y
 ```
-![Install nodejs](./images/install-nodejs.png)
+![Screenshot 2024-10-03 114810](https://github.com/user-attachments/assets/22529053-2a9a-48ba-a5c7-c2a48404b9da)
 
 __Note:__ the above command installs both node.js and npm. NPM is a package manager for Node just as apt is a package manager for Ubuntu. It is used to install Node modules and packages and to manage dependency conflicts.
 
-__4.__ __Verify the Node installation with the command below__.
+**4 **Verify the Node installation with the command below.
 
 ```bash
 node -v        // Gives the node version
 
 npm -v        // Gives the node package manager version
 ```
-![node-npm version](./images/node-npm-v.png)
-
+![Screenshot 2024-10-03 114923](https://github.com/user-attachments/assets/0fd852d1-b8be-4799-9635-f81980206f3e)
 
 ### Application Code Setup
 
-__1.__ __Create a new directory for the TO-DO project and switch to it. Then initialize the project directory.__
+**1**. Create a new directory for the TO-DO project and switch to it. Then initialize the project directory.
 ```bash
 mkdir Todo && ls && cd Todo
 
 npm init
 ```
+![Screenshot 2024-10-03 115343](https://github.com/user-attachments/assets/60be1d65-0766-4e42-ab2a-0514ae66d712)
 
-![Project dir](./images/init-proj-dir.png)
+
 
 This is to initialize the project directory and in the process, creates a new file called package.json. This file will contain information about your application and the dependencies it needs to run.
 Follow the prompts after running the command. You can press “Enter” several times to accept default values, then accept to write out the package.json file by typing yes.
