@@ -1,19 +1,15 @@
-## MERN WEB STACK IMPLEMENTATION IN AWS
-
+## MERN Web Stack Implementation in AWS
 
 ### Introduction
 
-__The MERN stack is a popular choice for building dynamic web applications. It leverages a combination of JavaScript technologies:__
+### The MERN stack is widely used for building dynamic web applications, utilizing a combination of JavaScript technologies:
 
-__MongoDB:__ A NoSQL document database for flexible data storage.
+- **MongoDB**: A NoSQL document-oriented database offering flexible data storage.
+- **Express.js**: A minimal web framework for Node.js, designed to simplify API and web application development.
+- **React.js**: A powerful library for creating interactive user interfaces.
+- **Node.js**: A JavaScript runtime that enables server-side JavaScript execution.
 
-__Express.js:__ A lightweight web framework for Node.js that simplifies building APIs and web applications.
-
-__React.js:__ A powerful library for creating interactive user interfaces.
-
-__Node.js:__ A JavaScript runtime environment that allows execution of server-side JavaScript code.__
-
-__This guide provides a comprehensive overview of setting up and utilizing each component of the MERN stack, to develop robust web applications.__
+This guide provides a detailed walkthrough of setting up and using each component of the MERN stack to develop robust web applications.
 
 
 ## Step 0: Prerequisites
@@ -21,18 +17,16 @@ __This guide provides a comprehensive overview of setting up and utilizing each 
 __1.__ EC2 Instance of t3.small type and Ubuntu 24.04 LTS (HVM) was lunched in the us-east-1 region using the AWS console.
 The choice of the instance type was based on the following:
 
-- __Memory:__ The t3.small instance offers more memory than the t2.micro, which is advantageous for applications that require more memory to operate efficiently.
+- **Memory:** The t3.small instance offers more memory than the t2.micro, which is advantageous for applications that require more memory to operate efficiently.
 
-- __Burst Capability:__ While both instances offer burstable CPU performance, the t3 instances have a more flexible burst model, allowing for more sustained performance during burst periods. This is important for workloads that require consistent performance over longer periods.
+- **Burst Capability:** While both instances offer burstable CPU performance, the t3 instances have a more flexible burst model, allowing for more sustained performance during burst periods. This is important for workloads that require consistent performance over longer periods.
 
-- __Performance:__ While both instances offer burstable performance, the t3.small typically provides better baseline performance compared to the t2.micro. This might be necessary for applications that require a bit more processing power.
+- **Performance:** While both instances offer burstable performance, the t3.small typically provides better baseline performance compared to the t2.micro. This might be necessary for applications that require a bit more processing power.
 
-![Lunch Instance](./images/create-ec2.png)
-![Lunch Instance](./images/ec2-details.png)
 
-__2.__ Attached SSH key named __my-ec2-key__ to access the instance on port 22
+**2** Attached SSH key named __my-ec2-key__ to access the instance on port 22
 
-__3.__ The security group was configured with the following inbound rules:
+-  The security group was configured with the following inbound rules:
 
 - Allow traffic on port 80 (HTTP) with source from anywhere on the internet.
 
@@ -44,7 +38,8 @@ __3.__ The security group was configured with the following inbound rules:
 
 - Allow traffic on port 3000 (Custom TCP) with sourec from anywhere.
 
-![Security Rules](./images/security-rule.png)
+![Screenshot 2024-10-03 114116](https://github.com/user-attachments/assets/4a64659e-999d-4d44-970f-fc66a3517c59)
+
 
 __4.__ The private ssh key permission was changed for the private key file and then used to connect to the instance by running
 ```bash
