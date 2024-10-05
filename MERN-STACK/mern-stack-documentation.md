@@ -311,19 +311,19 @@ module.exports = router;
 
 **mLab** provides MongoDB database as a service solution (DBaaS). MongoDB has two cloud database management system components: mLab and Atlas, Both were formerly cloud databases managed by MongoDB (MongoDB acquired mLab in 2018, with certain differences). In November, MongoDB merged the two cloud databases and as such, __mLab.com__ redirects to the __MongoDB Atlas website__.
 
-__1.__ __Create a MongoDB database and collection inside mLab__
+**1.** Create a MongoDB database and collection inside mLab.
 
 MongoDB Cluster Overview
+![Screenshot 2024-10-03 124316](https://github.com/user-attachments/assets/4880377d-c14b-42ff-b216-51f763c77d10)
 
-![DB overview](./images/db-overview.png)
 
 AWS cloud provider, in region N. Virginia (us-east-1) was selected.
 
-![Cloud region](./images/db-cloud-provider-region.png)
+
 
 Access from anywhere to the MongoDB database was allowed (Not secure but it is ideal for testing).
 
-![Network access](./images/db-network-access.png)
+
 
 A __database__ named __todo_db__ and __collections__ named __todos__ was created.
 
