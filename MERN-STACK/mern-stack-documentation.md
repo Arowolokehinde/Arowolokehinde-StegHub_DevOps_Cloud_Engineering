@@ -1,4 +1,4 @@
-![Screenshot 2024-10-03 114116](https://github.com/user-attachments/assets/e516384d-dedb-4ce2-adfc-96d6114cf545)![Screenshot 2024-10-03 135808](https://github.com/user-attachments/assets/112d6fa7-e8d7-48a5-a7ac-6b65a5ccfb54)## MERN Web Stack Implementation in AWS
+### MERN Web Stack Implementation in AWS
 
 ### Introduction
 
