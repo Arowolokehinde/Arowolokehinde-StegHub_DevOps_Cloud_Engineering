@@ -38,7 +38,7 @@ The choice of the instance type was based on the following:
 ![Screenshot 2024-10-03 114116](https://github.com/user-attachments/assets/4a64659e-999d-4d44-970f-fc66a3517c59)
 
 
-**4** The private ssh key permission was changed for the private key file and then used to connect to the instance by running
+**3** The private ssh key permission was changed for the private key file and then used to connect to the instance by running
 ```bash
 chmod 400 my-ec2-key.pem
 ```
