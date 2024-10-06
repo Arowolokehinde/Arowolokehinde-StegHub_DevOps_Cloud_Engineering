@@ -1,4 +1,4 @@
-## MERN Web Stack Implementation in AWS
+![Screenshot 2024-10-03 114116](https://github.com/user-attachments/assets/e516384d-dedb-4ce2-adfc-96d6114cf545)![Screenshot 2024-10-03 135808](https://github.com/user-attachments/assets/112d6fa7-e8d7-48a5-a7ac-6b65a5ccfb54)## MERN Web Stack Implementation in AWS
 
 ### Introduction
 
@@ -317,29 +317,40 @@ MongoDB Cluster Overview
 ![Screenshot 2024-10-03 124316](https://github.com/user-attachments/assets/4880377d-c14b-42ff-b216-51f763c77d10)
 
 
-AWS cloud provider, in region N. Virginia (us-east-1) was selected.
+AWS cloud provider, in region Aws Paris (us-west-3) was selected.
 
+![Screenshot 2024-10-03 125106](https://github.com/user-attachments/assets/29b764b9-e70c-43da-916b-c566d97775b4)
 
 
 Access from anywhere to the MongoDB database was allowed (Not secure but it is ideal for testing).
 
+![Screenshot 2024-10-03 124421](https://github.com/user-attachments/assets/6675793e-3b75-423b-a7ff-7ee99124d3ba)
 
 
-A __database__ named __todo_db__ and __collections__ named __todos__ was created.
+A __database__ named __todo-database__ and __collections__ named __todo_db__ was created.
 
-![Todo DB](./images/db.png)
+![Screenshot 2024-10-03 125158](https://github.com/user-attachments/assets/d5e017d9-6480-4553-b1c0-860474d8da76)
 
-__2.__ __Create a file in your Todo directory and name it .env, open the file__
+
+**2.** __Create a file in your Todo directory and name it .env, open the file__
 ```bash
 touch .env && vim .env
 ```
+
 Add connection string below to access the database
 
 ```bash
 DB = ‘mongodb+srv://<username>:<password>@<network-address>/<dbname>?retryWrites=true&w=majority’
 ```
-![Connection string](./images/db-conn-string.png)
+![Screenshot 2024-10-03 125325](https://github.com/user-attachments/assets/1b07a4b1-857d-4b3c-9aab-db6d4d175aa6)
 
+![Screenshot 2024-10-03 125342](https://github.com/user-attachments/assets/7e7199ab-1bf3-4b7e-8aa2-0dc632cbcd5f)
+
+![Screenshot 2024-10-03 125412](https://github.com/user-attachments/assets/e4cdec18-d74e-46f4-b187-83e957d9d80d)
+
+![Screenshot 2024-10-03 125500](https://github.com/user-attachments/assets/d0828916-08d7-474e-b38c-424d7e763763)
+
+![Screenshot 2024-10-03 125707](https://github.com/user-attachments/assets/9641437b-3e4f-4dbe-9858-b8ee3df82f51)
 
 __3.__ __Update the index.js to reflect the use of .env so that Node.js can connect to the database__.
 
@@ -389,15 +400,16 @@ app.listen(port, () => {
 });
 
 ```
-![index.js](./images/update-indexjs.png)
+
 
 Using environment variables to store information is considered more secure and best practice to separate configuration and secret data from the application, instead of writing connection strings directly inside the index.js application file.
 
-__4.__ __Start your server using the command__
+__4.__ Start your server using the command
 ```bash
 node index.js
 ```
-![Server](./images/warning.png)
+![Screenshot 2024-10-03 133236](https://github.com/user-attachments/assets/c19064b5-f2c9-4b12-95a4-b4b0a1d1f0bc)
+
 
 There was a deprecation warning as diplayed in the image above.
 To silent this warning, __{ useNewUrlParser: true, useUnifiedTopology: true }__ was removed from the code.
@@ -408,42 +420,43 @@ To silent this warning, __{ useNewUrlParser: true, useUnifiedTopology: true }__ 
 Postman was used to test the backend code.
 The endpoints were tested. For the endpoints that require body, JSON was sent back with the necessary fields since it’s what was set up in the code.
 
-__1.__ __Open Postman and Set the header__
+__1.__ Open Postman and Set the header
 
 ```bash
 http://54.175.65.60:5000/api/todos
 ```
-![Post request](./images/postman-header.png)
+![Screenshot 2024-10-03 135038](https://github.com/user-attachments/assets/46fff187-d871-4924-af7e-762312767d26)
 
 ### Create POST requests to the API
+![Screenshot 2024-10-03 135242](https://github.com/user-attachments/assets/2d6719fa-3b58-434f-b0c2-b1e329b9ca5b)
 
-![Post request](./images/post-req1.png)
-![Post request](./images/post-req2.png)
-![Post request](./images/post-req3.png)
-![Post request](./images/post-req5.png)
+![Screenshot 2024-10-03 135636](https://github.com/user-attachments/assets/83d84444-411b-4857-b893-ec37f50464f2)
 
 ### Check Database Collections
-
-![DB Collectioms](./images/db-collections.png)
+![Screenshot 2024-10-03 140001](https://github.com/user-attachments/assets/6dbcea7e-0f1a-4697-9a06-a779174a676b)
 
 
 ### Make a GET requests to the API
 
 This request retrieves all existing records from our To-Do application (backend requests these records from the database and sends us back as a response to GET request).
 
-![Get request](./images/get-req1.png)
+![Screenshot 2024-10-03 135716](https://github.com/user-attachments/assets/c1d243cf-5bf7-4f80-9bcc-fb8db08f747f)
+![Screenshot 2024-10-03 135808](https://github.com/user-attachments/assets/7b4c4e42-d83a-4b07-bfc6-c22e02b13926)
+
 
 ### Create a DELETE requests to the API
 
-![Delete request](./images/delete-req.png)
+![Screenshot 2024-10-03 135911](https://github.com/user-attachments/assets/1f04861f-d323-418f-af94-21f3bb99a713)
 
 ###  Check Database Collections
 
-![DB Collectioms](./images/db-collections2.png)
+![Screenshot 2024-10-03 140001](https://github.com/user-attachments/assets/7dd81473-bab2-4c75-b4bb-d6139bb74a9d)
+
 
 ### Make another GET requests to the API
 
-![Get request](./images/get-req2.png)
+![Screenshot 2024-10-03 135925](https://github.com/user-attachments/assets/4f139635-aaab-4101-9386-64063d33293c)
+
 
 
 ## Step 2 - Frontend Creation
@@ -455,9 +468,34 @@ __1.__ __In the same root directory as your backend code, which is the Todo dire
 ```bash
 npx create-react-app client
 ```
-![React](./images/setup-react-proj.png)
+![Screenshot 2024-10-03 154402](https://github.com/user-attachments/assets/fe011f84-664b-4ff4-aa60-2d906d8d8100)
 
-This created a new folder in the Todo directory called client, where all the react code was added.
+if it fails, you can follow the steps below 
+- i
+``` bash
+yarn cache clean && yarn install
+```
+- Then a yarn.lock file would be created, then do the next step below.
+- ii
+  ``` bash
+  yarn add react-scripts@latest
+  ```
+![Screenshot 2024-10-04 104249](https://github.com/user-attachments/assets/ae8b45c9-97b9-4fd1-97ff-eb58ca796e0e)
+
+- iii
+``` bash
+yarn add react@latest react-dom@latest
+```
+![Screenshot 2024-10-04 104309](https://github.com/user-attachments/assets/c284a68e-c132-4c0f-93ba-b85b5adda0f3)
+
+__1.__ __In the same root directory as your backend code, which is the Todo directory, you should now run the code below again:__
+
+```bash
+npx create-react-app client
+```
+  
+This would create a new folder in the Todo directory called client, where all the react code would be added.
+![Screenshot 2024-10-04 104409](https://github.com/user-attachments/assets/1a849251-4a6e-42b4-9a42-1d750d0c3eea)
 
 ### Running a React App
 
@@ -467,15 +505,15 @@ Before testing the react app, the following dependencies needs to be installed i
 ```bash
 npm install concurrently --save-dev
 ```
-![Concurrent](./images/install-concurrent.png)
+![Screenshot 2024-10-03 154841](https://github.com/user-attachments/assets/62324420-29d5-4ff4-bc96-25fe86aa7317)
+
 
 
 - __Install nodemon__. It is used to run and monitor the server. If there is any change in the server code, nodemon will restart it automatically and load the new changes.
 ```bash
 npm install nodemon --save-dev
 ```
-![Nodemon](./images/install-nodemon.png)
-
+![Screenshot 2024-10-03 163209](https://github.com/user-attachments/assets/6f7fb64f-7efb-4cd2-8891-29738321899c)
 
 - In Todo folder open the package.json file, change the highlighted part of the below screenshot and replace with the code below:
 ```bash
@@ -485,7 +523,8 @@ npm install nodemon --save-dev
   "dev": "concurrently \"npm run start-watch\" \"cd client && npm start\""
 }
 ```
-![Package.json](./images/script-package-json-update.png)
+![Screenshot 2024-10-03 172322](https://github.com/user-attachments/assets/b6023399-e5a9-457d-bee7-0bda573893bd)
+
 
 ### Configure Proxy In package.json
 
@@ -493,18 +532,18 @@ npm install nodemon --save-dev
 ```bash
 cd client
 ```
-
 - Open the package.json file
 ```bash
 vim package.json
 ```
-![Package](./images/open-pkg-client.png)
+![Screenshot 2024-10-04 141621](https://github.com/user-attachments/assets/5188fd1c-80e6-4745-b416-85fd90761281)
 
 Add the key value pair in the package.json file
 ```bash
 “proxy”: “http://localhost:5000”
 ```
-![Proxy](./images/proxy.png)
+![Screenshot 2024-10-04 141605](https://github.com/user-attachments/assets/0b8b8aab-38d8-4d51-ba95-25edbc9663da)
+
 
 The whole purpose of adding the proxy configuration above is to make it possible to access the application directly from the browser by simply calling the server url like
 http://locathost:5000 rather than always including the entire path like http://localhost:5000/api/todos
@@ -513,10 +552,12 @@ Ensure you are inside the Todo directory, and simply do:
 ```bash
 npm run dev
 ```
-![](./images/runing-app.png)
+
 The app opened and started running on localhost:3000
 
 __Note__: In order to access the application from the internet, TCP port 3000 had been opened on EC2.
+![Screenshot 2024-10-03 114116](https://github.com/user-attachments/assets/cd698e36-9b85-453e-b650-7583f0f010f1)
+
 
 
 ## Creating React Components
@@ -531,6 +572,7 @@ Move to the “src” directory
 ```bash
 cd src
 ```
+![Screenshot 2024-10-04 141741](https://github.com/user-attachments/assets/a5fb5361-81c6-4ece-bb39-20ac0ffec72e)
 
 __2.__ __Inside your src folder, create another folder called “components”__
 
@@ -541,13 +583,14 @@ Move into the components directory
 ```bash
 cd components
 ```
-![Component](./images/create-component.png)
+![Screenshot 2024-10-04 141741](https://github.com/user-attachments/assets/55db479d-9d55-4278-9ab8-450528752532)
+
 
 __3.__ __Inside the ‘components’ directory create three files “Input.js”, “ListTodo.js” and “Todo.js”.__
 ```bash
 touch Input.js ListTodo.js Todo.js
 ```
-![Component files](./images/component-files.png)
+![Screenshot 2024-10-04 141751](https://github.com/user-attachments/assets/ba922ed7-457d-4440-aae2-c4b4511c4ca1)
 
 #### Open Input.js file
 ```bash
@@ -598,7 +641,8 @@ class Input extends Component {
 
 export default Input;
 ```
-![Input](./images/input.png)
+![Screenshot 2024-10-04 141823](https://github.com/user-attachments/assets/35cc9dfb-4bc1-4292-ab72-5abf2eb6c57c)
+
 
 In oder to make use of Axios, which is a Promise based HTTP client for the browser and node.js, you need to cd into your client from your terminal and run yarn add axios or npm install axios.
 
@@ -610,12 +654,13 @@ __Install Axios__
 ```bash
 npm install axios
 ```
-![](./images/install-axios.png)
+
 
 #### Go to components directory
 ```bash
 cd src/components
 ```
+![Screenshot 2024-10-04 142430](https://github.com/user-attachments/assets/8d249e80-b664-46dd-b884-53f6cb76352c)
 
 #### After that open the ListTodo.js
 
@@ -649,7 +694,8 @@ const ListTodo = ({ todos, deleteTodo }) => {
 
 export default ListTodo;
 ```
-![Todo list](./images/listtodo.png)
+
+![Screenshot 2024-10-04 142350](https://github.com/user-attachments/assets/ba1123ca-530d-4328-a431-1718cf50a630)
 
 #### Then in the Todo.js file, write the following code
 
@@ -709,7 +755,8 @@ class Todo extends Component {
 
 export default Todo;
 ```
-![Todo](./images/todo-js.png)
+![Screenshot 2024-10-04 142407](https://github.com/user-attachments/assets/0184bcd4-1719-47f9-af88-67272f13cec5)
+
 
 __We need to make a little adjustment to our react code. Delete the logo and adjust our App.js to look like this__
 
@@ -741,7 +788,8 @@ const App = () => {
 export default App;
 
 ```
-![Appjs](./images/App-js.png)
+![Screenshot 2024-10-04 142601](https://github.com/user-attachments/assets/00b64d44-aa79-4019-81f9-2721eb721c78)
+
 
 ####  In the src directory, open the App.css
 
@@ -841,16 +889,14 @@ li {
 }
 
 ```
-![App css](./images/App-css.png)
+![Screenshot 2024-10-04 142646](https://github.com/user-attachments/assets/ecb0a511-3679-443b-a9ee-cb3a23038c1b)
+
 
 #### In the src directory, open the index.css
 
 ```bash
 vim index.css
 ```
-![src](./images/src-files.png)
-
-
 #### Copy and paste the code below:
 
 ```bash
@@ -869,7 +915,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 ```
-![index css](./images/index-css.png)
+![Screenshot 2024-10-04 142813](https://github.com/user-attachments/assets/e00dbc05-164b-4529-af75-1ac0d99eee66)
+![Screenshot 2024-10-04 142828](https://github.com/user-attachments/assets/11da99eb-1278-4254-858d-f6aa9c5d5759)
+
 
 #### Go to the Todo directory
 ```bash
@@ -880,23 +928,22 @@ Run:
 ```bash
 npm run dev
 ```
-![dev](./images/run-dev.png)
+![Screenshot 2024-10-04 112310](https://github.com/user-attachments/assets/b0811e2a-a4f2-4ccd-bd1c-a56da5f129af)
+
 
 At this point, the To-Do app is ready and fully functional with the functionality discussed earlier: Creating a task, deleting a task, and viewing all the tasks.
 
 __The client can now be viewed in the browser__
 
-![Todo web](./images/todo-website.png)
-
 __Add some todos via the browser .__
-
-![Todos](./images/add-todo.png)
 
 __Check them on the MongoDB database__
 
-![Todo](./images/add-todo-db.png)
+![Screenshot 2024-10-04 140914](https://github.com/user-attachments/assets/9e75ac63-8539-4ca0-a7fd-39eee5fce317)
+
 
 ### Conclusion
 
 By following this documentation and leveraging the provided resources, one is well-equipped to build and deploy full-fledged web applications utilizing the MERN stack.
 
+Written by Arowolo-Kehinde
