@@ -219,7 +219,7 @@ copy and paste the code below into the routes.js
     ```
 ![Screenshot 2024-10-04 154613](https://github.com/user-attachments/assets/8ebafb98-f347-4ab3-96c1-4b1bc6842935)
 
-3. **Create `models` Folder and `book.js` File in the apps Folder **:
+3. **Create `models` Folder and `book.js` File in the apps Folder**:
     ```sh
     mkdir models && cd models
     vim book.js
@@ -324,7 +324,7 @@ Copy and paste the code below (controller configuration defined) into the script
 ![Screenshot 2024-10-04 155246](https://github.com/user-attachments/assets/73118079-efa9-4b99-a242-7b7df1a220b7)
 
 
-2. ** In ‘public’ folder, create `index.html` File**:
+2. **In ‘public’ folder, create `index.html` File**:
     ```sh
     vim index.html
     ```
