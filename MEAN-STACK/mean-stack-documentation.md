@@ -1,4 +1,4 @@
-![Screenshot 2024-10-04 154217](https://github.com/user-attachments/assets/ce625f0f-2e6e-4e07-af14-a0e13abc75f5)# MEAN Stack Documentation
+# MEAN Stack Documentation
 
 ## Introduction
 
