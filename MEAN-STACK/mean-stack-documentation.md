@@ -31,7 +31,7 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
 ![Screenshot 2024-10-04 152936](https://github.com/user-attachments/assets/6ea03f06-7211-4f30-84aa-3d5e830e2e44)
 
 ## Step 1: Install Node.js
-
+Node.js is a JavaScript runtime built on Chrome’s V8 JavaScript engine. Node.js is used in this tutorial to set up the Express routes and AngularJS controllers.
 1. **Update and Upgrade Ubuntu**:
     ```sh
     sudo apt update && sudo apt upgrade -y
@@ -53,6 +53,7 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
 
 ## Step 2: Install MongoDB
 
+In this application, book entries were stored in MongoDB, including the title, ISBN number, author, and the number of pages.
 1. **Download MongoDB Public GPG Key**:
     ```sh
     curl -fsSL https://pgp.mongodb.com/server-7.0.asc | sudo gpg --dearmor -o /usr/share/keyrings/mongodb-archive-keyring.gpg
@@ -82,6 +83,7 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
 ![Screenshot 2024-10-04 153635](https://github.com/user-attachments/assets/4ee68049-1daa-4766-9a2c-8d5c49686e74)
 
 5. **Install `body-parser` Package**:
+**body-parser** package is needed to help process JSON files passed in requests to the server.
     ```sh
     sudo npm install body-parser
     ```
@@ -89,14 +91,14 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
 
 ![Screenshot 2024-10-04 154217](https://github.com/user-attachments/assets/859fa88e-6c56-417c-9cf7-2cb59609baaf)
 
-6. **Create Project Root Folder**:
+6. **Create Project Root Folder named Books and initialize the root folder**:
     ```sh
     mkdir Books && cd Books
     npm init
     ```
 ![Screenshot 2024-10-04 154231](https://github.com/user-attachments/assets/691b71de-cdad-439f-8a9c-6356f29bfd07)
 
-7. **Add `server.js` File**:
+7. **Add `server.js` File to the Books folder and paste the code below**:
     ```sh
     vim server.js
     ```
@@ -125,19 +127,21 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
 
 ## Step 3: Install Express and Set Up Routes
 
+Express was utilized to transfer book data between our MongoDB database, while the Mongoose package offered a simple schema-based approach to model the application data. Mongoose was employed to define a schema for the database to manage the book records.
+
 1. **Install Express and Mongoose**:
     ```sh
     sudo npm install express mongoose
     ```
 ![Screenshot 2024-10-04 154531](https://github.com/user-attachments/assets/ed219525-e9aa-4f89-a4ff-8dc13c0f3797)
 
-2. **Create `apps` Folder and `routes.js` File**:
+2. **Create `apps` Folder and `routes.js` File in the Books folder**:
     ```sh
     mkdir apps && cd apps
     vim routes.js
     ```
     ![Screenshot 2024-10-04 154639](https://github.com/user-attachments/assets/a556fff0-afe9-49eb-93e6-02bd13f8e569)
-
+copy and paste the code below into the routes.js
     ```javascript
     const Book = require('./models/book');
     const path = require('path');
@@ -215,13 +219,13 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
     ```
 ![Screenshot 2024-10-04 154613](https://github.com/user-attachments/assets/8ebafb98-f347-4ab3-96c1-4b1bc6842935)
 
-3. **Create `models` Folder and `book.js` File**:
+3. **Create `models` Folder and `book.js` File in the apps Folder **:
     ```sh
     mkdir models && cd models
     vim book.js
     ```
 ![Screenshot 2024-10-04 154920](https://github.com/user-attachments/assets/fac23724-1125-4d94-a8fc-428971fde381)
-
+Copy and paste the code below into book.js
     ```javascript
     const mongoose = require('mongoose');
 
@@ -237,18 +241,17 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
 ![Screenshot 2024-10-04 154932](https://github.com/user-attachments/assets/104b0c0a-1c60-4298-b354-7fc40d72f296)
 
 ## Step 4: Access Routes with AngularJS
-
-1. **Create `public` Folder and `script.js` File**:
+In this project, AngularJS was used to connect the web page with Express and perform actions on the book register.
+1. **Change the directory back to ‘Books’ and create `public` Folder and `script.js` File**:
     ```sh
     cd ../..
     mkdir public && cd public
     vim script.js
     ```
 ![Screenshot 2024-10-04 155051](https://github.com/user-attachments/assets/97aa06a2-a76f-4917-a416-32fa2a140fc2)
-
-    ```javascript
+Copy and paste the code below (controller configuration defined) into the script.js file.
+```javascript
     var app = angular.module('myApp', []);
-
     app.controller('myCtrl', function($scope, $http) {
       function getAllBooks() {
          $http({
@@ -317,15 +320,16 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
          });
       };
     });
-    ```
+```
 ![Screenshot 2024-10-04 155246](https://github.com/user-attachments/assets/73118079-efa9-4b99-a242-7b7df1a220b7)
 
 
-2. **Create `index.html` File**:
+2. ** In ‘public’ folder, create `index.html` File**:
     ```sh
     vim index.html
     ```
-    ```html
+Copy and paste the code below into index.html file
+```html
     <!DOCTYPE html>
     <html ng-app="myApp" ng-controller="myCtrl">
     <head>
@@ -380,11 +384,11 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
       </div>
     </body>
     </html>
-    ```
+```
 ![Screenshot 2024-10-04 155221](https://github.com/user-attachments/assets/704b7826-25f0-4ac1-92f3-e973c9635825)
 
 
-3. **Start the Server**:
+3. **Change the directory back up to ‘Books’ and start the Server**:
     ```sh
     cd ..
     node server.js
@@ -396,6 +400,11 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
 
 The server is now up and running, accessible via port 3300. You can test it using a browser with the public IP address or public DNS name.
 
+The Book Register web application can now be accessed from the internet with a browser using the Public IP address or Public DNS name.
+![Screenshot 2024-10-04 160158](https://github.com/user-attachments/assets/7e6c0891-f3a6-4eee-a028-ecddefe1cb75)
+
 ## Conclusion
 
-The MEAN stack—comprising MongoDB, Express.js, AngularJS (or Angular), and Node.js—provides a powerful and cohesive set of technologies for building modern web applications. Together, these technologies allow developers to use JavaScript throughout the entire development process, from front-end to back-end, promoting a unified and streamlined development workflow.
+The MEAN stack—comprising MongoDB, Express.js, AngularJS (or Angular), and Node.js—provides a powerful and cohesive set of technologies for building modern web applications.
+
+Together, these technologies allow developers to use JavaScript throughout the entire development process, from front-end to back-end, promoting a unified and streamlined development workflow.
