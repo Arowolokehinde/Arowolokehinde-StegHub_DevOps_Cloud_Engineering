@@ -1,4 +1,4 @@
-# MEAN Stack Documentation
+![Screenshot 2024-10-04 154217](https://github.com/user-attachments/assets/ce625f0f-2e6e-4e07-af14-a0e13abc75f5)# MEAN Stack Documentation
 
 ## Introduction
 
@@ -12,17 +12,23 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
 ## Step 0: Prerequisites
 
 1. **EC2 Instance**: Launch an EC2 instance of `t3.small` type with Ubuntu 22.04 LTS (HVM) in the `us-east-1` region using the AWS console.
+![Screenshot 2024-10-04 152349](https://github.com/user-attachments/assets/18d93d96-0f71-4d43-8e29-a655adebf2fd)
+![Screenshot 2024-10-04 152517](https://github.com/user-attachments/assets/9977c60e-6455-4489-82d8-4be7defe5826)
+
 2. **SSH Key**: Attach an SSH key named `my-ec2-key` to access the instance on port 22.
 3. **Security Group**: Configure the security group with the following inbound rules:
     - Allow traffic on port 80 (HTTP) from anywhere.
     - Allow traffic on port 443 (HTTPS) from anywhere.
     - Allow traffic on port 22 (SSH) from any IP address.
     - Allow traffic on port 3300 (Custom TCP) from anywhere.
+![Screenshot 2024-10-04 152643](https://github.com/user-attachments/assets/56f7820d-70af-490d-96dc-744e40db0b44)
+
 4. **SSH Connection**: Change the private SSH key permission and connect to the instance:
     ```sh
     chmod 400 my-ec2-key.pem
     ssh -i "my-ec2-key.pem" ubuntu@54.81.119.2
     ```
+![Screenshot 2024-10-04 152936](https://github.com/user-attachments/assets/6ea03f06-7211-4f30-84aa-3d5e830e2e44)
 
 ## Step 1: Install Node.js
 
@@ -30,15 +36,20 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
     ```sh
     sudo apt update && sudo apt upgrade -y
     ```
+![Screenshot 2024-10-04 153024](https://github.com/user-attachments/assets/31c4b8ce-1156-475c-a952-4c50287267e2)
+
 2. **Add Certificates**:
     ```sh
     sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
     curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
     ```
+![Screenshot 2024-10-04 153119](https://github.com/user-attachments/assets/5db7fa74-28ca-4791-9795-6f6974f15592)
+
 3. **Install Node.js**:
     ```sh
     sudo apt-get install -y nodejs
     ```
+![Screenshot 2024-10-04 153249](https://github.com/user-attachments/assets/80272c09-e8b4-4788-8ea4-33528d1b4ed8)
 
 ## Step 2: Install MongoDB
 
@@ -46,30 +57,45 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
     ```sh
     curl -fsSL https://pgp.mongodb.com/server-7.0.asc | sudo gpg --dearmor -o /usr/share/keyrings/mongodb-archive-keyring.gpg
     ```
+![Screenshot 2024-10-04 153410](https://github.com/user-attachments/assets/7fa89231-7757-407c-9b83-492d9aa19bdd)
+
+
 2. **Add MongoDB Repository**:
     ```sh
     echo "deb [ signed-by=/usr/share/keyrings/mongodb-archive-keyring.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
     ```
+![Screenshot 2024-10-04 153410](https://github.com/user-attachments/assets/1fe71572-1823-45f6-a193-17ba5a92cd54)
+
 3. **Update Package Database and Install MongoDB**:
     ```sh
     sudo apt-get update
     sudo apt-get install -y mongodb-org
     ```
+![Screenshot 2024-10-04 153542](https://github.com/user-attachments/assets/cf1b31c7-c2be-4169-8fea-a8d29230e8ca)
+
 4. **Start and Enable MongoDB**:
     ```sh
     sudo systemctl start mongod
     sudo systemctl enable mongod
     sudo systemctl status mongod
     ```
+![Screenshot 2024-10-04 153635](https://github.com/user-attachments/assets/4ee68049-1daa-4766-9a2c-8d5c49686e74)
+
 5. **Install `body-parser` Package**:
     ```sh
     sudo npm install body-parser
     ```
+![Screenshot 2024-10-04 153855](https://github.com/user-attachments/assets/6d197eca-05d4-43b4-9260-17d1de0a77eb)
+
+![Screenshot 2024-10-04 154217](https://github.com/user-attachments/assets/859fa88e-6c56-417c-9cf7-2cb59609baaf)
+
 6. **Create Project Root Folder**:
     ```sh
     mkdir Books && cd Books
     npm init
     ```
+![Screenshot 2024-10-04 154231](https://github.com/user-attachments/assets/691b71de-cdad-439f-8a9c-6356f29bfd07)
+
 7. **Add `server.js` File**:
     ```sh
     vim server.js
@@ -95,6 +121,7 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
       console.log('Server up: http://localhost:' + app.get('port'));
     });
     ```
+![Screenshot 2024-10-04 154333](https://github.com/user-attachments/assets/3e71c0fe-79bb-42c4-a71f-62eff197b96c)
 
 ## Step 3: Install Express and Set Up Routes
 
@@ -102,11 +129,15 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
     ```sh
     sudo npm install express mongoose
     ```
+![Screenshot 2024-10-04 154531](https://github.com/user-attachments/assets/ed219525-e9aa-4f89-a4ff-8dc13c0f3797)
+
 2. **Create `apps` Folder and `routes.js` File**:
     ```sh
     mkdir apps && cd apps
     vim routes.js
     ```
+    ![Screenshot 2024-10-04 154639](https://github.com/user-attachments/assets/a556fff0-afe9-49eb-93e6-02bd13f8e569)
+
     ```javascript
     const Book = require('./models/book');
     const path = require('path');
@@ -182,11 +213,15 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
       });
     };
     ```
+![Screenshot 2024-10-04 154613](https://github.com/user-attachments/assets/8ebafb98-f347-4ab3-96c1-4b1bc6842935)
+
 3. **Create `models` Folder and `book.js` File**:
     ```sh
     mkdir models && cd models
     vim book.js
     ```
+![Screenshot 2024-10-04 154920](https://github.com/user-attachments/assets/fac23724-1125-4d94-a8fc-428971fde381)
+
     ```javascript
     const mongoose = require('mongoose');
 
@@ -199,6 +234,7 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
 
     module.exports = mongoose.model('Book', bookSchema);
     ```
+![Screenshot 2024-10-04 154932](https://github.com/user-attachments/assets/104b0c0a-1c60-4298-b354-7fc40d72f296)
 
 ## Step 4: Access Routes with AngularJS
 
@@ -208,6 +244,8 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
     mkdir public && cd public
     vim script.js
     ```
+![Screenshot 2024-10-04 155051](https://github.com/user-attachments/assets/97aa06a2-a76f-4917-a416-32fa2a140fc2)
+
     ```javascript
     var app = angular.module('myApp', []);
 
@@ -280,6 +318,9 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
       };
     });
     ```
+![Screenshot 2024-10-04 155246](https://github.com/user-attachments/assets/73118079-efa9-4b99-a242-7b7df1a220b7)
+
+
 2. **Create `index.html` File**:
     ```sh
     vim index.html
@@ -340,12 +381,18 @@ The MEAN stack is a popular JavaScript stack used for building web applications.
     </body>
     </html>
     ```
+![Screenshot 2024-10-04 155221](https://github.com/user-attachments/assets/704b7826-25f0-4ac1-92f3-e973c9635825)
+
 
 3. **Start the Server**:
     ```sh
     cd ..
     node server.js
     ```
+![Screenshot 2024-10-04 155551](https://github.com/user-attachments/assets/5413ba7c-cac2-45b8-b9ee-2291995c92af)
+
+
+![Screenshot 2024-10-04 155615](https://github.com/user-attachments/assets/32b9b610-6bb3-4faf-8a36-bf5ce7a2912f)
 
 The server is now up and running, accessible via port 3300. You can test it using a browser with the public IP address or public DNS name.
 
