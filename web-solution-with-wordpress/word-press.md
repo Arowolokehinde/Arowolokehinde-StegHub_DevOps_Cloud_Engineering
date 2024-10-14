@@ -332,20 +332,40 @@
 
 
 8. **Configure WordPress to connect to remote database**.
-    ```bash
+```bash
     sudo yum install mysql-server
+```
+```
     sudo systemctl start mysqld
     sudo systemctl enable mysqld
     sudo systemctl status mysqld
+```
+```
     cd /var/www/html
-    sudo vi wp-config.php
+```
+![Screenshot 2024-10-13 152652](https://github.com/user-attachments/assets/9034a49b-9b91-4242-b4e8-4b4ffa3e43f3)
+```
+ sudo vi wp-config.php
+```
+![Screenshot 2024-10-13 152716](https://github.com/user-attachments/assets/52a912ac-f999-445b-be5a-ccd1f1622ad0)
+![Screenshot 2024-10-13 152742](https://github.com/user-attachments/assets/8b188ac3-a317-4db2-9317-6ed770bf2f2d)
+```
     sudo systemctl restart httpd
     sudo mv /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf_backup
-    sudo mysql -h 172.31.30.142 -u wordpress -p
+```
+![Screenshot 2024-10-13 152811](https://github.com/user-attachments/assets/4b3e0250-a6f3-4a27-a283-b1db0e8c1925)
+
+ ```
+     sudo mysql -h 172.31.30.142 -u wordpress -p
     show databases;
     exit;
-    ```
+ ```
+![Screenshot 2024-10-13 145137](https://github.com/user-attachments/assets/9fd9f41b-558c-426a-9544-159cc37ca873)
+
 
 9. **Access the web page** again with the Web Server public IP address and install WordPress on the browser.
+![Screenshot 2024-10-13 153146](https://github.com/user-attachments/assets/ed5e8fce-1fdc-42a6-928d-af61fd28c1ac)
+
+![Screenshot 2024-10-13 153210](https://github.com/user-attachments/assets/5baaaba1-841a-4261-b8d5-8d20a0184ace)
 
 At this point, the implementation of this project is complete and WordPress is available to be used.
