@@ -367,5 +367,8 @@
 ![Screenshot 2024-10-13 153146](https://github.com/user-attachments/assets/ed5e8fce-1fdc-42a6-928d-af61fd28c1ac)
 
 ![Screenshot 2024-10-13 153210](https://github.com/user-attachments/assets/5baaaba1-841a-4261-b8d5-8d20a0184ace)
-
 At this point, the implementation of this project is complete and WordPress is available to be used.
+
+You can now access your WordPress site by navigating to the public IP address of your Web Server in a web browser. Follow the on-screen instructions to complete the WordPress setup, including setting up your site title, admin username, password, and email.
+
+Congratulations! You have successfully set up a scalable WordPress environment with a dedicated web server and database server. This setup ensures that your WordPress site can handle increased traffic and provides a robust foundation for further customization and development.
