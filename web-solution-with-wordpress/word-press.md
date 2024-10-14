@@ -42,7 +42,7 @@
 ```
 ![Screenshot 2024-10-12 230355](https://github.com/user-attachments/assets/7b322d91-ac5b-451b-942c-f4dd31cc7b05)
 
- ** use n to add a new partition, p to print partition and w to write to the partition **
+ **use n to add a new partition, p to print partition and w to write to the partition**
 
 5b. Use lsblk utility to view the newly configured partitions on each of the 3 disks
 ```
