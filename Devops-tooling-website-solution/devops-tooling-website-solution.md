@@ -12,8 +12,9 @@ This project involves implementation of a solution that consists of the followin
 - **Code Repository:** GitHub
 
 The diagram below shows the architecture of the solution.
+<img width="754" alt="3-Tier (10)" src="https://github.com/user-attachments/assets/2854666d-2c78-46cf-bc18-a22fa3b46d1e">
 
-3 tier
+
 
 ## Step 1 - Prepare NFS Server
 
