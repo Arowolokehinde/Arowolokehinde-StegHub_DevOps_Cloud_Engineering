@@ -3,8 +3,9 @@
 A Load Balancer (LB) distributes clients' requests among underlying Web Servers and makes sure that the load is distributed in an optimal way.
 
 The diagram below shows the architecture of the solution
-<img width="600" alt="architecture-diag" src="https://github.com/user-attachments/assets/41a0338a-dfd7-461d-8239-663538075bd3">
 
+
+<img width="auto" alt="architecture-diag" src="https://github.com/user-attachments/assets/7f45725d-063f-4ada-b88b-35dafff47852">
 
 ## Task
 Deploy and configure an Apache Load Balancer for Tooling Website solution on a separate Ubuntu EC2 instance. Make sure that users can be served by Web servers through the Load Balancer.
