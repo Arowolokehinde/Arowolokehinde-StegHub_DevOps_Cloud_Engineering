@@ -32,7 +32,7 @@ Ensure that the following servers are installed and configured already.
 ![Screenshot 2024-11-05 175127](https://github.com/user-attachments/assets/149480e7-2d93-465d-a1f6-9b01bcb78ea4)
 
 
-## 2. Open TCP port 80 on Project-8-apache-lb by creating an Inbound Rule in Security Group
+## 2. Open TCP port 80 on Project-8-apache-lb by creating an Inbound Rule in Security Group.
 
 ![Screenshot 2024-11-05 175312](https://github.com/user-attachments/assets/7adef058-1def-4077-9da3-d7589bffdc11)
 
