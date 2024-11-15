@@ -9,7 +9,7 @@ According to Circle CI, Continuous integration (CI) is a software development st
 Enhance the architecture prepared in the previous project by adding a `Jenkins` server, configure a job to automatically deploy source codes changes from `Git` to `NFS` server.
 
 Here is how the updated architecture looks.
-<img width="743" alt="architecture" src="https://github.com/user-attachments/assets/7f0acb97-431e-4f57-9692-5ed6f69bf859">
+<img width="auto" alt="architecture" src="https://github.com/user-attachments/assets/7f0acb97-431e-4f57-9692-5ed6f69bf859">
 
 
 
